@@ -84,6 +84,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                         <td>
                             <a href=\"#\" class=\"js-delete-rep-log\">
                                 <span class=\"fa fa-trash\"></span>
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -91,7 +92,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 35
+            // line 36
             echo "                    <tr>
                         <td colspan=\"4\">Get liftin'!</td>
                     </tr>
@@ -100,15 +101,15 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['repLog'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 40
         echo "                </tbody>
                 <tfoot>
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
                         <th>";
-        // line 44
-        echo twig_escape_filter($this->env, (isset($context["totalWeight"]) || array_key_exists("totalWeight", $context) ? $context["totalWeight"] : (function () { throw new Twig_Error_Runtime('Variable "totalWeight" does not exist.', 44, $this->source); })()), "html", null, true);
+        // line 45
+        echo twig_escape_filter($this->env, (isset($context["totalWeight"]) || array_key_exists("totalWeight", $context) ? $context["totalWeight"] : (function () { throw new Twig_Error_Runtime('Variable "totalWeight" does not exist.', 45, $this->source); })()), "html", null, true);
         echo "</th>
                         <td>&nbsp;</td>
                     </tr>
@@ -116,7 +117,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             </table>
 
             ";
-        // line 50
+        // line 51
         echo twig_include($this->env, $context, "lift/_form.html.twig");
         echo "
 
@@ -125,14 +126,14 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             <div class=\"leaderboard\">
                 <h2 class=\"text-center\">
                     <img class=\"dumbbell\" src=\"";
-        // line 56
+        // line 57
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/dumbbell.png"), "html", null, true);
         echo "\" />
                     Leaderboard
                 </h2>
 
                 ";
-        // line 60
+        // line 61
         echo twig_include($this->env, $context, "lift/_leaderboard.html.twig");
         echo "
             </div>
@@ -144,13 +145,13 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
 
     }
 
-    // line 66
+    // line 67
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 67
+        // line 68
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -162,8 +163,11 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             \$table.find('.js-delete-rep-log').on('click', function (e) {
                 e.preventDefault();
 
-                // \$(e.target).addClass('text-danger');
-                e.target.className = e.target.className + ' text-danger';
+                \$(this).addClass('text-danger');
+                \$(this).find('.fa')
+                    .removeClass('fa-trash')
+                    .addClass('fa-spinner')
+                    .addClass('fa-spin');
             });
 
             \$table.find('tbody tr').on('click', function () {
@@ -189,7 +193,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
 
     public function getDebugInfo()
     {
-        return array (  154 => 67,  148 => 66,  136 => 60,  129 => 56,  120 => 50,  111 => 44,  104 => 39,  95 => 35,  82 => 27,  78 => 26,  74 => 25,  71 => 24,  66 => 23,  45 => 4,  39 => 3,  15 => 1,);
+        return array (  155 => 68,  149 => 67,  137 => 61,  130 => 57,  121 => 51,  112 => 45,  105 => 40,  96 => 36,  82 => 27,  78 => 26,  74 => 25,  71 => 24,  66 => 23,  45 => 4,  39 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -224,6 +228,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                         <td>
                             <a href=\"#\" class=\"js-delete-rep-log\">
                                 <span class=\"fa fa-trash\"></span>
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -269,8 +274,11 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             \$table.find('.js-delete-rep-log').on('click', function (e) {
                 e.preventDefault();
 
-                // \$(e.target).addClass('text-danger');
-                e.target.className = e.target.className + ' text-danger';
+                \$(this).addClass('text-danger');
+                \$(this).find('.fa')
+                    .removeClass('fa-trash')
+                    .addClass('fa-spinner')
+                    .addClass('fa-spin');
             });
 
             \$table.find('tbody tr').on('click', function () {
