@@ -162,7 +162,8 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             \$table.find('.js-delete-rep-log').on('click', function (e) {
                 e.preventDefault();
 
-                console.log('todo delete!');
+                // \$(e.target).addClass('text-danger');
+                e.target.className = e.target.className + ' text-danger';
             });
 
             \$table.find('tbody tr').on('click', function () {
@@ -268,7 +269,8 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             \$table.find('.js-delete-rep-log').on('click', function (e) {
                 e.preventDefault();
 
-                console.log('todo delete!');
+                // \$(e.target).addClass('text-danger');
+                e.target.className = e.target.className + ' text-danger';
             });
 
             \$table.find('tbody tr').on('click', function () {
