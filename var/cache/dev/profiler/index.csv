@@ -12,3 +12,4 @@ d335e0,127.0.0.1,GET,http://localhost:8000/,1532970554,,302
 88fb11,127.0.0.1,GET,http://localhost:8000/login,1532970554,,200
 20a601,127.0.0.1,GET,http://localhost:8000/,1532970570,,302
 70ff7f,127.0.0.1,GET,http://localhost:8000/lift,1532970570,,200
+c4c170,127.0.0.1,GET,http://localhost:8000/lift,1532971922,,200
