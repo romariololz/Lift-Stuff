@@ -159,11 +159,13 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
         \$(document).ready(function () {
             var \$table = \$('.js-rep-log-table');
 
-            \$table.find('.js-delete-rep-log').on('click', function () {
+            \$table.find('.js-delete-rep-log').on('click', function (e) {
+                e.preventDefault();
+
                 console.log('todo delete!');
             });
 
-            \$table.find('.js-rep-log-table tbody tr').on('click', function () {
+            \$table.find('tbody tr').on('click', function () {
                 console.log('row clicked');
             })
         });
@@ -263,11 +265,13 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
         \$(document).ready(function () {
             var \$table = \$('.js-rep-log-table');
 
-            \$table.find('.js-delete-rep-log').on('click', function () {
+            \$table.find('.js-delete-rep-log').on('click', function (e) {
+                e.preventDefault();
+
                 console.log('todo delete!');
             });
 
-            \$table.find('.js-rep-log-table tbody tr').on('click', function () {
+            \$table.find('tbody tr').on('click', function () {
                 console.log('row clicked');
             })
         });
