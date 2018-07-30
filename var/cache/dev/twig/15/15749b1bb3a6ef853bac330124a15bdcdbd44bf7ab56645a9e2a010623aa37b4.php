@@ -51,7 +51,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                 </a>
             </h2>
 
-            <table class=\"table table-striped\">
+            <table class=\"table table-striped js-rep-log-table\">
                 <thead>
                 <tr>
                     <th>What</th>
@@ -157,9 +157,15 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
 
     <script>
         \$(document).ready(function () {
-            \$('.js-delete-rep-log').on('click', function () {
+            var \$table = \$('.js-rep-log-table');
+
+            \$table.find('.js-delete-rep-log').on('click', function () {
                 console.log('todo delete!');
             });
+
+            \$table.find('.js-rep-log-table tbody tr').on('click', function () {
+                console.log('row clicked');
+            })
         });
     </script>
 ";
@@ -197,7 +203,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                 </a>
             </h2>
 
-            <table class=\"table table-striped\">
+            <table class=\"table table-striped js-rep-log-table\">
                 <thead>
                 <tr>
                     <th>What</th>
@@ -255,9 +261,15 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
 
     <script>
         \$(document).ready(function () {
-            \$('.js-delete-rep-log').on('click', function () {
+            var \$table = \$('.js-rep-log-table');
+
+            \$table.find('.js-delete-rep-log').on('click', function () {
                 console.log('todo delete!');
             });
+
+            \$table.find('.js-rep-log-table tbody tr').on('click', function () {
+                console.log('row clicked');
+            })
         });
     </script>
 {% endblock %}", "lift/index.html.twig", "/home/romariololz/www-dev/LAB/code-javascript/app/Resources/views/lift/index.html.twig");
