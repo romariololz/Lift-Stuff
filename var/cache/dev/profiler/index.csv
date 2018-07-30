@@ -1,0 +1,14 @@
+f41053,127.0.0.1,GET,http://localhost:8000/,1532969777,,302
+0eb466,127.0.0.1,GET,http://localhost:8000/lift,1532969777,,302
+2ee078,127.0.0.1,GET,http://localhost:8000/login,1532969777,,200
+65f988,127.0.0.1,POST,http://localhost:8000/login_check,1532969918,,302
+47734c,127.0.0.1,GET,http://localhost:8000/lift,1532969918,,200
+6fc98c,127.0.0.1,POST,http://localhost:8000/lift,1532969944,,200
+d5788c,127.0.0.1,POST,http://localhost:8000/lift,1532969954,,302
+3dda91,127.0.0.1,GET,http://localhost:8000/lift,1532969954,,200
+7cbadf,127.0.0.1,GET,http://localhost:8000/lift,1532970218,,200
+d335e0,127.0.0.1,GET,http://localhost:8000/,1532970554,,302
+308850,127.0.0.1,GET,http://localhost:8000/lift,1532970554,,302
+88fb11,127.0.0.1,GET,http://localhost:8000/login,1532970554,,200
+20a601,127.0.0.1,GET,http://localhost:8000/,1532970570,,302
+70ff7f,127.0.0.1,GET,http://localhost:8000/lift,1532970570,,200
