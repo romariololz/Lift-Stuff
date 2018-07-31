@@ -68,7 +68,9 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["repLog"]) {
             // line 24
-            echo "                    <tr>
+            echo "                    <tr data-weight=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["repLog"], "totalWeightLifted", array()), "html", null, true);
+            echo "\">
                         <td>";
             // line 25
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_get_attribute($this->env, $this->source, $context["repLog"], "itemLabel", array())), "html", null, true);
@@ -82,9 +84,14 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["repLog"], "totalWeightLifted", array()), "html", null, true);
             echo "</td>
                         <td>
-                            <a href=\"#\" class=\"js-delete-rep-log\">
+                            <a href=\"#\"
+                               class=\"js-delete-rep-log\"
+                               data-url=\"";
+            // line 31
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("rep_log_delete", array("id" => twig_get_attribute($this->env, $this->source, $context["repLog"], "id", array()))), "html", null, true);
+            echo "\"
+                            >
                                 <span class=\"fa fa-trash\"></span>
-                                Delete
                             </a>
                         </td>
                     </tr>
@@ -92,7 +99,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 36
+            // line 38
             echo "                    <tr>
                         <td colspan=\"4\">Get liftin'!</td>
                     </tr>
@@ -101,15 +108,15 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['repLog'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 42
         echo "                </tbody>
                 <tfoot>
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
-                        <th>";
-        // line 45
-        echo twig_escape_filter($this->env, (isset($context["totalWeight"]) || array_key_exists("totalWeight", $context) ? $context["totalWeight"] : (function () { throw new Twig_Error_Runtime('Variable "totalWeight" does not exist.', 45, $this->source); })()), "html", null, true);
+                        <th class=\"js-total-weight\">";
+        // line 47
+        echo twig_escape_filter($this->env, (isset($context["totalWeight"]) || array_key_exists("totalWeight", $context) ? $context["totalWeight"] : (function () { throw new Twig_Error_Runtime('Variable "totalWeight" does not exist.', 47, $this->source); })()), "html", null, true);
         echo "</th>
                         <td>&nbsp;</td>
                     </tr>
@@ -117,7 +124,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             </table>
 
             ";
-        // line 51
+        // line 53
         echo twig_include($this->env, $context, "lift/_form.html.twig");
         echo "
 
@@ -126,14 +133,14 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
             <div class=\"leaderboard\">
                 <h2 class=\"text-center\">
                     <img class=\"dumbbell\" src=\"";
-        // line 57
+        // line 59
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/dumbbell.png"), "html", null, true);
         echo "\" />
                     Leaderboard
                 </h2>
 
                 ";
-        // line 61
+        // line 63
         echo twig_include($this->env, $context, "lift/_leaderboard.html.twig");
         echo "
             </div>
@@ -145,13 +152,13 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
 
     }
 
-    // line 67
+    // line 69
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 68
+        // line 70
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -168,6 +175,19 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                     .removeClass('fa-trash')
                     .addClass('fa-spinner')
                     .addClass('fa-spin');
+
+                var deleteUrl = \$(this).data('url');
+                var \$row = \$(this).closest('tr');
+                var \$totalWeightContainer = \$table.find('.js-total-weight');
+                var newWeight = \$totalWeightContainer.html() - \$row.data('weight');
+                \$.ajax({
+                    url:deleteUrl,
+                    method: 'DELETE',
+                    success: function () {
+                        \$row.fadeOut();
+                        \$totalWeightContainer.html(newWeight);
+                    }
+                })
             });
 
             \$table.find('tbody tr').on('click', function () {
@@ -193,7 +213,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
 
     public function getDebugInfo()
     {
-        return array (  155 => 68,  149 => 67,  137 => 61,  130 => 57,  121 => 51,  112 => 45,  105 => 40,  96 => 36,  82 => 27,  78 => 26,  74 => 25,  71 => 24,  66 => 23,  45 => 4,  39 => 3,  15 => 1,);
+        return array (  162 => 70,  156 => 69,  144 => 63,  137 => 59,  128 => 53,  119 => 47,  112 => 42,  103 => 38,  91 => 31,  84 => 27,  80 => 26,  76 => 25,  71 => 24,  66 => 23,  45 => 4,  39 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -221,14 +241,16 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                 </thead>
                 <tbody>
                 {% for repLog in repLogs %}
-                    <tr>
+                    <tr data-weight=\"{{ repLog.totalWeightLifted }}\">
                         <td>{{ repLog.itemLabel|trans }}</td>
                         <td>{{ repLog.reps }}</td>
                         <td>{{ repLog.totalWeightLifted }}</td>
                         <td>
-                            <a href=\"#\" class=\"js-delete-rep-log\">
+                            <a href=\"#\"
+                               class=\"js-delete-rep-log\"
+                               data-url=\"{{ path('rep_log_delete', { id: repLog.id }) }}\"
+                            >
                                 <span class=\"fa fa-trash\"></span>
-                                Delete
                             </a>
                         </td>
                     </tr>
@@ -242,7 +264,7 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
-                        <th>{{ totalWeight }}</th>
+                        <th class=\"js-total-weight\">{{ totalWeight }}</th>
                         <td>&nbsp;</td>
                     </tr>
                 </tfoot>
@@ -279,6 +301,19 @@ class __TwigTemplate_712a9b2e35e7a628b3501cdf370cd61d331528f73e654926757d9a8d52f
                     .removeClass('fa-trash')
                     .addClass('fa-spinner')
                     .addClass('fa-spin');
+
+                var deleteUrl = \$(this).data('url');
+                var \$row = \$(this).closest('tr');
+                var \$totalWeightContainer = \$table.find('.js-total-weight');
+                var newWeight = \$totalWeightContainer.html() - \$row.data('weight');
+                \$.ajax({
+                    url:deleteUrl,
+                    method: 'DELETE',
+                    success: function () {
+                        \$row.fadeOut();
+                        \$totalWeightContainer.html(newWeight);
+                    }
+                })
             });
 
             \$table.find('tbody tr').on('click', function () {
